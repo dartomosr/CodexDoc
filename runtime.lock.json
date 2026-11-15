@@ -1,0 +1,9 @@
+{
+  "python": "3.13.9",
+  "libreoffice": {
+    "version": "25.2.7.2",
+    "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/25.2.7.2/win/x86_64/LibreOffice_25.2.7.2_Win_x86-64.msi",
+    "sha256": "9fdd22f8ea7a92a67de5beaa08588ef6da58c1930ac86fd57c46b0c6d7ca9d34",
+    "license": "MPL-2.0; see bundled license files"
+  }
+}

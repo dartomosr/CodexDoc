@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "codexdoc"
+version = "0.4.0"
+description = "Локальная среда подготовки документов и заданий для агента"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "python-docx==1.2.0",
+  "pydantic==2.12.3",
+  "PyMuPDF==1.26.5",
+  "PySide6==6.10.0",
+  "Pillow==12.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.4.2", "ruff==0.14.3", "pyright==1.1.407", "build==1.3.0", "hatchling==1.27.0"]
+
+[project.scripts]
+codexdoc = "codexdoc.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = ["integration: managed LibreOffice integration"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.pyright]
+pythonVersion = "3.13"
+typeCheckingMode = "basic"
+include = ["codexdoc"]
+venvPath = "."
+venv = ".venv"
+reportMissingTypeStubs = false
+
+[tool.hatch.build.targets.wheel]
+packages = ["codexdoc"]
+
+[tool.hatch.build.targets.sdist]
+include = ["codexdoc/", "scripts/", "examples/", "tests/", "norms/", "README.md", "Как работать.html", "pyproject.toml", "uv.lock", "runtime.lock.json", "CodexDoc.cmd", "Настроить.cmd", ".python-version", ".gitignore"]
